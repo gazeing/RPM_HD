@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <WKNavigationDelegate>
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+-(void) navigateTo:(NSString*)url;
 
 @end
 

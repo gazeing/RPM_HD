@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define     BASE_URL @"http://www.rpmonline.com.au"
+
 @class DetailViewController;
 
 @interface MasterViewController : UITableViewController
