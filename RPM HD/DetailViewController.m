@@ -126,7 +126,7 @@
     
     
     
-    NSString* loadUrl =@"http://www.rpmonline.com.au";
+    NSString* loadUrl =@"http://www.rebonline.com.au";
     if (currentUrl.length>0) {
         loadUrl = currentUrl;
     }
@@ -159,14 +159,27 @@
 
 -(void)webView:(WKWebView *)webView didStartProvisionalNavigation: (WKNavigation *)navigation {
     
+    NSLog(@"didStartProvisionalNavigation %@",webView.URL.absoluteString);
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation: (WKNavigation *)navigation{
-    
+    NSLog(@"didFinishNavigation");
 }
 
 -(void)webView:(WKWebView *)webView didFailNavigation: (WKNavigation *)navigation withError:(NSError *)error {
-    
+    NSLog(@"didFailNavigation");
 }
+
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+    NSLog(@"didReceiveServerRedirectForProvisionalNavigation");
+}
+
+//- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+//    NSLog(@"decidePolicyForNavigationResponse");
+//}
+//
+//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+//    NSLog(@"decidePolicyForNavigationAction");
+//}
 
 @end

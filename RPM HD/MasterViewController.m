@@ -77,12 +77,13 @@
 //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 //    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    
-    
-    [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=26"];
-    [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=8"];
-     [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=13"];
-    [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=53"];
+    [self BuildCachePageQueue:@"http://www.rebonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=1"];
+
+//    
+//    [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=26"];
+//    [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=8"];
+//     [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=13"];
+//    [self BuildCachePageQueue:@"http://www.rpmonline.com.au/?option=com_ajax&format=json&plugin=latestajaxarticlesfromcategory&cat_id=53"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,12 +124,29 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//
+////    NSDate *object = self.objects[indexPath.row];
+////    cell.textLabel.text = [object description];
+//    RPMArticle *article = self.objects[indexPath.row];
+//    cell.textLabel.text = [article title];
+//    cell.detailTextLabel.numberOfLines = 2;
+//    cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if( cell == nil ) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:10.0];
+ // 0 means no max.
 
-//    NSDate *object = self.objects[indexPath.row];
-//    cell.textLabel.text = [object description];
+    }
     RPMArticle *article = self.objects[indexPath.row];
     cell.textLabel.text = [article title];
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping; // Pre-iOS6 use UILineBreakModeWordWrap
+    cell.textLabel.numberOfLines = 0;
+
     return cell;
 }
 
@@ -145,6 +163,30 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [self heightForBasicCellAtIndexPath:indexPath];
+//}
+//
+//- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
+//    static RWBasicCell *sizingCell = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];
+//    });
+//    
+//    [self configureBasicCell:sizingCell atIndexPath:indexPath];
+//    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+//}
+//
+//- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+//    [sizingCell setNeedsLayout];
+//    [sizingCell layoutIfNeeded];
+//    
+//    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    return size.height;
+//}
 
 
 #pragma mark - download item from network

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define     BASE_URL @"http://www.rpmonline.com.au"
+#define     BASE_URL @"http://www.rebonline.com.au"
 
 @class DetailViewController;
 
